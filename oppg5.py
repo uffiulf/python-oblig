@@ -22,28 +22,25 @@ filmlist = [
 #5.1 B)
 
 
-
-
-
-
-
 def legg_til():
     name = input("navn på film: ")
     year = input("Når ble filmen lansert?: ")
     rating = input("IMDB rating?: ")
+    if rating == "":
+        rating ="5.0"
     
     filmlist.append({"name": name,
                      "year": year,
                      "rating": rating
                     })
+#bruker kan velge selv hva som skal legges til i listen
+legg_til()
 
 
-#legg_til()
-
-#print(filmlist)
+print(filmlist)
 
 
-#C)
+
 
 funn=[]
 
@@ -52,7 +49,7 @@ def finn_film(yuo):
         if yuo in x.values():
             funn.append(x)
 
-#finn_film()
+
 
 
 #finn_film(yuo = input("hvilken film skal jeg finne basert på lanseringsåret?"))
@@ -71,4 +68,13 @@ fortsatt_oppg3_c()
 
 print(funn)
 
-open("filmliste.txt", "r", )
+
+
+def skriv_til_fil(filmlist):
+    with open("movies.txt", "w", ) as f:
+        for x in filmlist:
+            f.write(x["name"] + " " + x["year"] + " " + x["rating"] + "\n")
+
+
+skriv_til_fil(filmlist)
+
